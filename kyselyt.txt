@@ -1,0 +1,23 @@
+============================================================
+KAPAKKAGRAPH - KYSELYESIMERKIT
+============================================================
+
+1. HAKU: Etsi kaikki Matin kaverit
+MATCH (m:Asiakas {nimi: "Matti"})-[:TUNTEE]-(kaveri)
+RETURN kaveri.nimi;
+
+2. SUOSITTELU: Ketkä kaverit tykkäävät Karhusta?
+MATCH (m:Asiakas {nimi: "Matti"})-[:TUNTEE]-(k)-[:PITÄÄ]->(j:Juoma {nimi: "Karhu"})
+RETURN k.nimi;
+
+3. POLKU: Miten Matti ja Seppo tuntevat toisensa (kaverin kaverit)?
+MATCH path = shortestPath((m:Asiakas {nimi: "Matti"})-[:TUNTEE*]-(s:Asiakas {nimi: "Seppo"}))
+RETURN path;
+
+4. PÄIVITYS: Maija alkoikin pitää Karhusta
+MATCH (a:Asiakas {nimi: "Maija"}), (j:Juoma {nimi: "Karhu"})
+CREATE (a)-[:PITÄÄ]->(j);
+
+5. POISTAMINEN: Seppo muutti pois, poistetaan solmu ja suhteet
+MATCH (s:Asiakas {nimi: "Seppo"})
+DETACH DELETE s;
