@@ -1,0 +1,18 @@
+# --- Tietokantadatan ohitus (KRIITTINEN) ---
+# Ohitetaan kaikki data-kansiot riippumatta siitä, missä ne ovat
+**/data/
+**/neo4j_data/
+**/import/
+
+# --- Käyttöjärjestelmän tiedostot ---
+.DS_Store
+Thumbs.db
+
+# --- Lokitiedostot ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Ympäristömuuttujat (Jos käytät .env-tiedostoja) ---
+.env
