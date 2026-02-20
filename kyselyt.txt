@@ -2,6 +2,20 @@
 KAPAKKAGRAPH - KYSELYESIMERKIT
 ============================================================
 
+Tyjennys
+
+MATCH (n)
+DETACH DELETE n;
+
+-----------------------
+
+Näytä kaikki
+
+MATCH (n) 
+RETURN n;
+
+-----------------------
+
 1. HAKU: Etsi kaikki Matin kaverit
 MATCH (m:Asiakas {nimi: "Matti"})-[:TUNTEE]-(kaveri)
 RETURN kaveri.nimi;
